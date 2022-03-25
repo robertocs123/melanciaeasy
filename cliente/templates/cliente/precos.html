@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Preços{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<h3>Preços por Kg.</h3>
+		<ul class="pedido-list">
+        
+        
+            <li class="pedido-item">
+            	Redonda Graúda:
+            	<span class="preco"  style="float: right; color:  #86B404;">1,89</span> 
+            </li>
+
+            <li class="pedido-item">
+            	Redonda Média:
+            	<span class="preco" style="float: right; color:  #86B404;">1,69</span> 
+            </li>
+
+            <li class="pedido-item">
+            	Redonda Miúda:
+            	<span class="preco"  style="float: right; color:  #86B404; ">1,59</span> 
+            </li>
+      
+    </ul>
+    <a style=" float: right;" href="{% url 'pedido-list' %}" class="btn btn-primary  mt-3" role="button"><i class="fas fa-arrow-circle-left"></i> Voltar ao menu</a>
+	</div>
+</div>
+
+
+{% endblock %}
+

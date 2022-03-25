@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}MelanciaEasy{% endblock %}
+
+{% block content %}
+
+
+
+ 
+
+
+
+<div class="row">
+        <div class="col-md-12 mt-2">
+            <a href="{% url 'precos' %}" class="btn btn-primary btn-block btn-lg" role="button">Consultar preços <i class="fas fa-search-dollar"></i> </a>
+           
+        </div>
+
+        <div  class="mt-2  col-md-12 mb-2 ">                                    
+            <a href="newpedido/" class="btn btn-danger btn-block btn-lg" role="button">Fazer pedido <i class="fas fa-plus"></i></a>
+
+        </div>
+
+</div>
+
+
+<div class="row">
+    
+        
+
+    <div class="form-group lead mt-3 col-5"> 
+                <p>Seus pedidos</p>
+    </div>
+    <div class="form-group mt-3 col-7">
+        <select name="filter" id="filter" class="form-control col-11">
+            <option value="">Filtrar por...</option>
+            <option value="done">Pedidos recebidos</option>
+            <option value="doing">Pedidos enviados</option>
+        </select>
+    </div>
+</div>
+        
+        
+       
+<div class="row mb-5">
+ <div class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+   {% if pedidos %}
+    <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          
+          <th scope="col">Tipo</th>
+          <th scope="col">Quant.</th>
+          <th scope="col">Situação</th>
+          <th scope="col">Data</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for pedido in pedidos %}
+            {% if pedido.done == 'done' %}
+            <tr class="table-success">
+            {% else %}
+            <tr>
+            {% endif %}
+              <td><a href="#">{{pedido.get_tipomelancia_display}}</a></td>
+              <td>{{pedido.quantidade}}</td>
+              <th>{{pedido.get_done_display}}</th>
+              <td>{{pedido.created_at}}</td>
+            </tr>
+            <tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+   
+
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if pedidos.has_previous %}
+                <a href="?page={{ pedidos.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if pedidos.paginator.num_pages %}
+            <span class="current">
+                {{ pedidos.number }} de {{ pedidos.paginator.num_pages }}
+            </span>
+            {% endif %}
+        
+            {% if pedidos.has_next %}
+                <a href="?page={{ pedidos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+    <div class="row">
+        <div class="col-md-12 lead">
+           <p> Infelizmente o estoque de melancias ainda está zerado, seu pedido não poderá ser entegue no momento. </p>
+            <p>Obrigado por usar o MelanciaEasy :)</p>
+        </div>
+         
+     </div>
+     {% else %}
+     <div class="row">
+        <div class="col-md-12 lead">
+           <p> Você ainda não fez nenhum pedido!</p> 
+            <p> Clique no botão "<b>Fazer pedido</b>" e peça uma linda melancia.</p>
+        </div>
+         
+     </div>
+
+     {% endif %}
+    
+    </div>
+
+    
+</div>
+
+
+
+
+
+{% endblock %}

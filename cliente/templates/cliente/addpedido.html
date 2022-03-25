@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Adicione uma tarefa{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h3>Faça seu pedido:</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <!-- <form method="POST">
+        <input type="hidden" name="csrfmiddlewaretoken">
+        	<div id="div_id_tipomelancia" class="form-group"> 
+        		<label for="id_tipomelancia" class=" requiredField">Tipo da melancia<span class="asteriskField">*</span> 
+        		</label> 
+        		<div class=""> 
+        			<select name="tipomelancia" class="select form-control" required="" id="id_tipomelancia">
+        				<option value="" selected="">---------</option> 
+        				<option value="rgrauda">Redonda Graúda</option> 
+        				<option value="rmedia">Redonda Média</option> 
+        				<option value="rmiuda">Redonda Miúda</option>
+        			</select> 
+        		</div> 
+        	</div> 
+        	<div id="div_id_logradouro" class="form-group"> 
+        		<label for="id_logradouro" class=" requiredField">
+        			Logradouro<span class="asteriskField">*</span> 
+        		</label> 
+        		<div class=""> 
+        			<input type="text" name="logradouro" maxlength="100" class="textinput textInput form-control" required="" id="id_logradouro"> 
+        		</div> 
+        	</div> 
+        	<div id="div_id_bairro" class="form-group"> 
+        		<label for="id_bairro" class=" requiredField">
+        			Bairro<span class="asteriskField">*</span> 
+        		</label> 
+        		<div class=""> 
+        			<input type="text" name="bairro" maxlength="50" class="textinput textInput form-control" required="" id="id_bairro"> 
+        		</div> 
+        	</div> 
+        	<div id="div_id_pontoreferencia" class="form-group"> 
+        		<label for="id_pontoreferencia" class=" requiredField">
+        			Ponto de referência<span class="asteriskField">*</span> 
+        		</label> <div class=""> 
+        			<input type="text" name="pontoreferencia" maxlength="100" class="textinput textInput form-control" required="" id="id_pontoreferencia"> 
+        		</div> 
+        	</div> 
+        	<div id="div_id_quantidade" class="form-group"> 
+        		<label for="id_quantidade" class=" requiredField">
+        			Quantidade<span class="asteriskField">*</span> 
+        		</label> 
+        		<div class=""> 
+        			<input type="number" name="quantidade" value="1" class="numberinput form-control" required="" id="id_quantidade"> 
+        		</div> 
+        	</div>
+
+        	<input type="submit" class="btn btn-success" value="Fazer pedido">
+    </form>-->
+
+
+        <input style="float: right;" type="submit" class="btn btn-success mb-3" value="Fazer pedido">
+    </form>
+</div>
+{% endblock %}
